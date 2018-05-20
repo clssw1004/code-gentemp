@@ -27,12 +27,6 @@ namespace App
             this.listView1.Columns.Add("类型", 120, HorizontalAlignment.Left);
             this.listView1.Columns.Add("可空", 120, HorizontalAlignment.Left);
         }
-        private void connectDb_Click(object sender, EventArgs e)
-        {
-            ConnectArgs connectArgs = new ConnectArgs();
-            connectArgs.window = this;
-            connectArgs.ShowDialog();
-        }
         public void RefreshView()
         {
             if (Adapter != null)
@@ -47,8 +41,8 @@ namespace App
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 if (Adapter != null && listBox1.SelectedItem != null)
                 {
                     List<DbColumn> cols = Adapter.GetColumns(listBox1.SelectedItem.ToString());
@@ -65,11 +59,24 @@ namespace App
 
                     this.listView1.EndUpdate();
                 }
-            //}catch(Exception ex)
-            //{
+        }catch(Exception ex)
+            {
 
-            //}
-            
+            }
+
+}
+
+        private void menu_connDb_Click(object sender, EventArgs e)
+        {
+            ConnectArgs connectArgs = new ConnectArgs();
+            connectArgs.window = this;
+            connectArgs.ShowDialog();
+        }
+
+        private void menu_template_Click(object sender, EventArgs e)
+        {
+            SetPath sp = new SetPath();
+            sp.ShowDialog();
         }
     }
 }

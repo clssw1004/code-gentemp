@@ -31,8 +31,10 @@ namespace App
             {
                 String file = openFileDialog1.FileName;
                 textBox1.Text = file;
-                Template template = new Template(file);
-                scintilla1.Text = template.Analyze(); 
+                Template template = new Template(file,Encoding.UTF8);
+                Dictionary<string, string> args = new Dictionary<string, string>();
+                args.Add("variname", "ab");
+                scintilla1.Text = template.Analyze(args); 
 
             }
         }

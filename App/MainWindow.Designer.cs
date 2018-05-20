@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.connectDb = new System.Windows.Forms.ToolStripMenuItem();
+            this.config = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_connDb = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_template = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.scintilla = new ScintillaNET.Scintilla();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.scintilla = new ScintillaNET.Scintilla();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -50,19 +52,35 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connectDb});
+            this.config});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1348, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // connectDb
+            // config
             // 
-            this.connectDb.Name = "connectDb";
-            this.connectDb.Size = new System.Drawing.Size(96, 24);
-            this.connectDb.Text = "连接数据库";
-            this.connectDb.Click += new System.EventHandler(this.connectDb_Click);
+            this.config.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_connDb,
+            this.menu_template});
+            this.config.Name = "config";
+            this.config.Size = new System.Drawing.Size(51, 24);
+            this.config.Text = "配置";
+            // 
+            // menu_connDb
+            // 
+            this.menu_connDb.Name = "menu_connDb";
+            this.menu_connDb.Size = new System.Drawing.Size(216, 26);
+            this.menu_connDb.Text = "连接数据库";
+            this.menu_connDb.Click += new System.EventHandler(this.menu_connDb_Click);
+            // 
+            // menu_template
+            // 
+            this.menu_template.Name = "menu_template";
+            this.menu_template.Size = new System.Drawing.Size(216, 26);
+            this.menu_template.Text = "模版路径";
+            this.menu_template.Click += new System.EventHandler(this.menu_template_Click);
             // 
             // splitContainer1
             // 
@@ -78,7 +96,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1348, 693);
-            this.splitContainer1.SplitterDistance = 249;
+            this.splitContainer1.SplitterDistance = 185;
             this.splitContainer1.TabIndex = 2;
             // 
             // listBox1
@@ -89,7 +107,7 @@
             this.listBox1.ItemHeight = 18;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(249, 693);
+            this.listBox1.Size = new System.Drawing.Size(185, 693);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -106,27 +124,27 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.scintilla);
-            this.splitContainer2.Size = new System.Drawing.Size(1095, 693);
-            this.splitContainer2.SplitterDistance = 225;
+            this.splitContainer2.Size = new System.Drawing.Size(1159, 693);
+            this.splitContainer2.SplitterDistance = 339;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // scintilla
-            // 
-            this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintilla.Location = new System.Drawing.Point(0, 0);
-            this.scintilla.Name = "scintilla";
-            this.scintilla.Size = new System.Drawing.Size(866, 693);
-            this.scintilla.TabIndex = 0;
             // 
             // listView1
             // 
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(225, 693);
+            this.listView1.Size = new System.Drawing.Size(339, 693);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // scintilla
+            // 
+            this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintilla.Location = new System.Drawing.Point(0, 0);
+            this.scintilla.Name = "scintilla";
+            this.scintilla.Size = new System.Drawing.Size(816, 693);
+            this.scintilla.TabIndex = 0;
             // 
             // MainWindow
             // 
@@ -160,8 +178,10 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private ScintillaNET.Scintilla scintilla;
-        private System.Windows.Forms.ToolStripMenuItem connectDb;
+        private System.Windows.Forms.ToolStripMenuItem config;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ToolStripMenuItem menu_connDb;
+        private System.Windows.Forms.ToolStripMenuItem menu_template;
     }
 }
 
