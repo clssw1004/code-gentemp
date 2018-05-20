@@ -7,7 +7,7 @@ namespace engine
 {
     public interface IDbAdapter
     {
-        List<String> getTables();
-        List<Dictionary<String,Object>> getColumns();
+        List<String> GetTables();
+        List<DbColumn> GetColumns(String tableName);
     }
 }

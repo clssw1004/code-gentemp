@@ -27,7 +27,10 @@ namespace engine
             }
             Args = args;
         }
-
+        /// <summary>
+        /// 解析模版
+        /// </summary>
+        /// <returns></returns>
         public String Analyze()
         {
             StringBuilder sb = new StringBuilder();
@@ -37,7 +40,11 @@ namespace engine
             }
             return sb.ToString();
         }
-
+        /// <summary>
+        /// 解析行
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
         private String dealLine(String line)
         {
             String result = line;
@@ -75,11 +82,19 @@ namespace engine
             }
             return result;
         }
+        private String GetValue(String variable)
+        {
+            if (Args.ContainsKey(variable))
+            {
+                return Args[variable];
+            }
+            return String.Format(" [\"{0}\" is undefined] ", variable);
+        }
         private static Template GetTemplate(String tpName)
         {
             return new Template(tpName);
         }
-        public static String GetVariable(String m, EnumGrammerType type)
+        private static String GetVariable(String m, EnumGrammerType type)
         {
             String variable = m;
             switch (type)
@@ -104,14 +119,6 @@ namespace engine
                 }
             }
             return result;
-        }
-        private String GetValue(String variable)
-        {
-            if (Args.ContainsKey(variable))
-            {
-                return Args[variable];
-            }
-            return String.Format(" [\"{0}\" is undefined] ", variable);
         }
     }
 }
