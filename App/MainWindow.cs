@@ -1,4 +1,5 @@
 ﻿using engine;
+using engine.db;
 using MySql.Data.MySqlClient;
 using ScintillaNET;
 using System;
@@ -18,7 +19,7 @@ namespace App
     {
         private List<DbColumn> tableCols;
         private String selectTable;
-        private Dictionary<String, String> args = new Dictionary<string, string>();
+        private Dictionary<String, Object> args = new Dictionary<String, Object>();
         public IDbAdapter Adapter { get; set; }
         public MainWindow()
         {
@@ -124,27 +125,27 @@ namespace App
         }
         private void renderTemplate()
         {
-            String pathPrefix = @"D:\env\2018\templates\";
+            String pathPrefix = @"D:\env\2018\code-gentemp\templates\";
 
             String controll1Path = pathPrefix + @"controller\TDicController.java";
-            Template t1 = new Template(controll1Path, Encoding.UTF8);
+            SimpleTemplate t1 = new SimpleTemplate(controll1Path, Encoding.UTF8);
             tp_controller1.Text = args["modelName"] + "Controller";
-            src_c1.Text = t1.Analyze(args);
+            src_c1.Text = t1.Render(args);
             
             String controll2Path = pathPrefix + @"controller\TDicQueryController.java";
-            Template t2 = new Template(controll2Path, Encoding.UTF8);
+            SimpleTemplate t2 = new SimpleTemplate(controll2Path, Encoding.UTF8);
             tp_controller2.Text = args["modelName"] + "QueryController";
-            src_c2.Text = t2.Analyze(args);
+            src_c2.Text = t2.Render(args);
 
             String service1Path = pathPrefix + @"service\TDicService.java";
-            Template t3 = new Template(service1Path, Encoding.UTF8);
+            SimpleTemplate t3 = new SimpleTemplate(service1Path, Encoding.UTF8);
             tp_service1.Text = args["modelName"] + "Service";
-            src_s1.Text = t2.Analyze(args);
+            src_s1.Text = t2.Render(args);
 
             String service2Path = pathPrefix + @"query\TDicQuery.java";
-            Template t4 = new Template(service2Path, Encoding.UTF8);
+            SimpleTemplate t4 = new SimpleTemplate(service2Path, Encoding.UTF8);
             tp_service2.Text = args["modelName"] + "Query";
-            src_s2.Text = t2.Analyze(args);
+            src_s2.Text = t2.Render(args);
 
         }
         private void addArgs(String key, String val)

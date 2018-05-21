@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using MySql.Data.MySqlClient;
 
-namespace engine
+namespace engine.db
 {
     public class MysqlAdapter : IDbAdapter
     {

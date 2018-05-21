@@ -31,10 +31,10 @@ namespace App
             {
                 String file = openFileDialog1.FileName;
                 textBox1.Text = file;
-                Template template = new Template(file,Encoding.UTF8);
-                Dictionary<string, string> args = new Dictionary<string, string>();
+                SimpleTemplate template = new SimpleTemplate(file,Encoding.UTF8);
+                Dictionary<String, Object> args = new Dictionary<String, Object>();
                 args.Add("variname", "ab");
-                scintilla1.Text = template.Analyze(args); 
+                scintilla1.Text = template.Render(args); 
 
             }
         }

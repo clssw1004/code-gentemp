@@ -50,20 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForeachTemplate.cs" />
+    <Compile Include="Template.cs" />
     <Compile Include="TemplateConfig.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EnumGrammerType.cs" />
-    <Compile Include="frame\DbColumn.cs" />
-    <Compile Include="frame\IDbAdapter.cs" />
+    <Compile Include="db\DbColumn.cs" />
+    <Compile Include="db\IDbAdapter.cs" />
     <Compile Include="InternalVariable.cs" />
-    <Compile Include="MysqlAdapter.cs" />
+    <Compile Include="db\MysqlAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Template.cs" />
+    <Compile Include="SimpleTemplate.cs" />
+    <Compile Include="TemplateFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dlls\" />
