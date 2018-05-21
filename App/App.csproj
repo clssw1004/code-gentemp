@@ -36,7 +36,7 @@
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="ScintillaNET">
-      <HintPath>..\..\..\..\home\下载\jacobslusser.ScintillaNET.3.6.3\ScintillaNET.dll</HintPath>
+      <HintPath>..\engine\dlls\ScintillaNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
