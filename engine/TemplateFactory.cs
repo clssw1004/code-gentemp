@@ -49,7 +49,14 @@ namespace engine
         }
         public static void Register(String tplName, String tplContent)
         {
-            global_templates.Add(tplName, tplContent);
+            if (global_templates.ContainsKey(tplName))
+            {
+                global_templates[tplName] = tplContent;
+            }
+            else
+            {
+                global_templates.Add(tplName, tplContent);
+            }
         }
         public static void RefreshResources()
         {
@@ -62,29 +69,39 @@ namespace engine
         private static void RefreshByPath(String path)
         {
             DirectoryInfo di = new DirectoryInfo(path);
-            foreach(var si in di.GetFileSystemInfos())
+            if(di.Exists)
             {
-                if(si is DirectoryInfo)
+                foreach (var si in di.GetFileSystemInfos())
                 {
-                    RefreshByPath(si.FullName);
-                }
-                else if(si is FileInfo)
-                {
-
-                    FileInfo fi = si as FileInfo;
-                    if (Regex.IsMatch(fi.Name, @"\.json$"))
+                    if (si is DirectoryInfo)
                     {
-                        String json = File.ReadAllText(fi.FullName, Encoding.UTF8);
-                        JObject jObject = (JObject)JsonConvert.DeserializeObject(json);
-                        foreach (var t in jObject)
-                        {
-                            global_args.Add(t.Key, t.Value.ToString());
-                        }
+                        RefreshByPath(si.FullName);
                     }
-                    if (Regex.IsMatch(fi.Name, @"\.tpl$"))
+                    else if (si is FileInfo)
                     {
-                        String tplStr = File.ReadAllText(fi.FullName, Encoding.UTF8);
-                        TemplateFactory.Register(fi.Name, tplStr);
+
+                        FileInfo fi = si as FileInfo;
+                        if (Regex.IsMatch(fi.Name, @"\.json$"))
+                        {
+                            String json = File.ReadAllText(fi.FullName, Encoding.UTF8);
+                            JObject jObject = (JObject)JsonConvert.DeserializeObject(json);
+                            foreach (var t in jObject)
+                            {
+                                if (global_args.ContainsKey(t.Key))
+                                {
+                                    global_args[t.Key] = t.Value.ToString();
+                                }
+                                else
+                                {
+                                    global_args.Add(t.Key, t.Value.ToString());
+                                }
+                            }
+                        }
+                        if (Regex.IsMatch(fi.Name, @"\.tpl$"))
+                        {
+                            String tplStr = File.ReadAllText(fi.FullName, Encoding.UTF8);
+                            TemplateFactory.Register(fi.Name, tplStr);
+                        }
                     }
                 }
             }

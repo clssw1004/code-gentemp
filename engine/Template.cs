@@ -40,19 +40,9 @@ namespace engine
             return String.Format(" [\"{0}\" is undefined] ", variable);
         }
 
-        protected static String GetVariable(String m, EnumGrammerType type)
+        protected static String GetVariable(String m)
         {
-            String variable = m;
-            switch (type)
-            {
-                case EnumGrammerType.ARG:
-                    variable = replaceToBlank(variable, "${", "}");
-                    break;
-                case EnumGrammerType.INCLUDE:
-                    variable = replaceToBlank(variable, "$include{", "}");
-                    break;
-            }
-            return variable;
+            return Regex.Replace(m, Constants.REPLACE_REGEX, "");
         }
         protected static String replaceToBlank(String src, params String[] str)
         {

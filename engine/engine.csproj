@@ -50,7 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ForeachTemplate.cs" />
+    <Compile Include="db\DbTool.cs" />
+    <Compile Include="LoopTemplate.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="TemplateConfig.cs" />
     <Compile Include="Constants.cs" />

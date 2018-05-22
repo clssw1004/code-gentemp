@@ -46,8 +46,11 @@ namespace App
 
         private void btn_del_Click(object sender, EventArgs e)
         {
-            TemplateConfig.RemovePath(listBox1.SelectedIndex);
-            RefreshList();
+            if (listBox1.SelectedItem != null)
+            {
+                TemplateConfig.RemovePath(listBox1.SelectedIndex);
+                RefreshList();
+            }
         }
     }
 }

@@ -39,7 +39,7 @@ namespace engine
             MatchCollection mc = Regex.Matches(result, Constants.ARG_REGEX);
             foreach (Match m in mc)
             {
-                String variable = GetVariable(m.Value, EnumGrammerType.ARG);
+                String variable = GetVariable(m.Value);
                 String value = null;
                 if (InternalVariable.IsInternal(variable))
                 {
@@ -64,7 +64,7 @@ namespace engine
             MatchCollection mc = Regex.Matches(result, Constants.INCLUDE_REGEX);
             foreach (Match m in mc)
             {
-                String variable = GetVariable(m.Value, EnumGrammerType.INCLUDE);
+                String variable = GetVariable(m.Value);
                 SimpleTemplate template = TemplateFactory.GetTemplate<SimpleTemplate>(variable);
                 String value = null;
                 if (template != null)

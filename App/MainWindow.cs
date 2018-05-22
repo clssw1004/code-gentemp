@@ -52,16 +52,23 @@ namespace App
                 selectTable = listBox1.SelectedItem.ToString();
                 tableCols = Adapter.GetColumns(selectTable);
                 this.listView1.BeginUpdate();
-
+                List<Dictionary<String, Object>> columns = new List<Dictionary<string, object>>(); 
                 foreach (var col in tableCols)
                 {
+                    Dictionary<String, Object > column = new Dictionary<String, Object>();
+                    column.Add("columnDbName", col.ColumnName);
+                    column.Add("columnDbType", col.ColumnType);
+                    column.Add("columnComment", col.ColumnComment);
+                    column.Add("columnName", DbTool.tramsCamel(col.ColumnName));
+                    column.Add("columnType", DbTool.getJavaTypeByDbType(col.ColumnType));
+                    columns.Add(column);
                     ListViewItem lvi = new ListViewItem();
                     lvi.Text = col.ColumnName;
                     lvi.SubItems.Add(col.ColumnType);
                     lvi.SubItems.Add(col.IsNullable);
                     this.listView1.Items.Add(lvi);
                 }
-
+                addArgs("columns", columns);
                 this.listView1.EndUpdate();
                 generateArgs();
                 renderTemplate();
@@ -98,14 +105,7 @@ namespace App
                     modelName = modelName.Replace(p, "");
                 }
                 //驼峰命名生曾实体类名
-                MatchCollection mc = Regex.Matches(modelName, "_[0-9a-zA-Z_]{1,1}");
-                if (mc != null)
-                {
-                    foreach (Match m in mc)
-                    {
-                        modelName = modelName.Replace(m.Value, m.Value.ToUpper().Replace("_", ""));
-                    }
-                }
+                modelName = DbTool.tramsCamel(modelName);
                 String modelNameVariable = modelName;
                 modelName = modelName.Substring(0, 1).ToUpper() + modelName.Substring(1);
                 String bizName = modelName.ToLower();
@@ -137,8 +137,12 @@ namespace App
             tp_service2.Text = args["modelName"] + "Query";
             src_s2.Text = t2.Render(args);
 
+            LoopTemplate lt = TemplateFactory.GetTemplate<LoopTemplate>("domain");
+            tp_domain.Text = args["modelName"] + "";
+            src_do.Text = lt.Render(args);
+
         }
-        private void addArgs(String key, String val)
+        private void addArgs(String key, Object val)
         {
             if (args.ContainsKey(key))
             {

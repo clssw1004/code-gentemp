@@ -9,7 +9,9 @@ namespace engine
     {
         public const String ARG_REGEX = @"\$\{[a-zA-Z_]{1,}[0-9a-zA-Z_]{1,}\}";
         public const String INCLUDE_REGEX = @"\$include\{\S{1,}\.tpl\}";
-        public const String FOR_BEGIN_REGEX = @"$for\{variable\}";
-        public const String FOR_END_REGEX = @"$for\{end\}";
+        public const String FOR_BEGIN_REGEX = @"\$for\{[a-zA-Z_]{1,}[0-9a-zA-Z_]{1,}\}";
+        public const String FOR_END_REGEX = @"\$endfor\{[a-zA-Z_]{1,}[0-9a-zA-Z_]{1,}\}";
+
+        public const String REPLACE_REGEX = @"\$(for|include|end|endfor)?\{|\}";
     }
 }
