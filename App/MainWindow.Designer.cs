@@ -39,22 +39,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tb_ex_prefix = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tb_bizName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tb_modelName = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.sec_do = new System.Windows.Forms.TabControl();
             this.tp_controller1 = new System.Windows.Forms.TabPage();
-            this.tp_controller2 = new System.Windows.Forms.TabPage();
-            this.tp_service1 = new System.Windows.Forms.TabPage();
-            this.tp_domain = new System.Windows.Forms.TabPage();
-            this.tp_service2 = new System.Windows.Forms.TabPage();
             this.src_c1 = new ScintillaNET.Scintilla();
+            this.tp_controller2 = new System.Windows.Forms.TabPage();
             this.src_c2 = new ScintillaNET.Scintilla();
+            this.tp_service1 = new System.Windows.Forms.TabPage();
             this.src_s1 = new ScintillaNET.Scintilla();
+            this.tp_service2 = new System.Windows.Forms.TabPage();
             this.src_s2 = new ScintillaNET.Scintilla();
+            this.tp_domain = new System.Windows.Forms.TabPage();
             this.src_do = new ScintillaNET.Scintilla();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tb_modelName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_bizName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_url = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -68,13 +70,13 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.sec_do.SuspendLayout();
             this.tp_controller1.SuspendLayout();
             this.tp_controller2.SuspendLayout();
             this.tp_service1.SuspendLayout();
-            this.tp_domain.SuspendLayout();
             this.tp_service2.SuspendLayout();
+            this.tp_domain.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -213,50 +215,6 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "包名";
-            // 
-            // tb_bizName
-            // 
-            this.tb_bizName.Location = new System.Drawing.Point(63, 11);
-            this.tb_bizName.Name = "tb_bizName";
-            this.tb_bizName.Size = new System.Drawing.Size(100, 21);
-            this.tb_bizName.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 42);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "实体名";
-            // 
-            // tb_modelName
-            // 
-            this.tb_modelName.Location = new System.Drawing.Point(63, 39);
-            this.tb_modelName.Name = "tb_modelName";
-            this.tb_modelName.Size = new System.Drawing.Size(100, 21);
-            this.tb_modelName.TabIndex = 3;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tb_modelName);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.tb_bizName);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(613, 137);
-            this.panel1.TabIndex = 0;
-            // 
             // sec_do
             // 
             this.sec_do.Controls.Add(this.tp_controller1);
@@ -281,6 +239,15 @@
             this.tp_controller1.TabIndex = 0;
             this.tp_controller1.UseVisualStyleBackColor = true;
             // 
+            // src_c1
+            // 
+            this.src_c1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.src_c1.Location = new System.Drawing.Point(3, 3);
+            this.src_c1.Name = "src_c1";
+            this.src_c1.Size = new System.Drawing.Size(599, 383);
+            this.src_c1.TabIndex = 0;
+            this.src_c1.Text = "scintilla1";
+            // 
             // tp_controller2
             // 
             this.tp_controller2.Controls.Add(this.src_c2);
@@ -291,42 +258,6 @@
             this.tp_controller2.TabIndex = 1;
             this.tp_controller2.UseVisualStyleBackColor = true;
             // 
-            // tp_service1
-            // 
-            this.tp_service1.Controls.Add(this.src_s1);
-            this.tp_service1.Location = new System.Drawing.Point(4, 22);
-            this.tp_service1.Name = "tp_service1";
-            this.tp_service1.Size = new System.Drawing.Size(605, 389);
-            this.tp_service1.TabIndex = 2;
-            this.tp_service1.UseVisualStyleBackColor = true;
-            // 
-            // tp_domain
-            // 
-            this.tp_domain.Controls.Add(this.src_do);
-            this.tp_domain.Location = new System.Drawing.Point(4, 22);
-            this.tp_domain.Name = "tp_domain";
-            this.tp_domain.Size = new System.Drawing.Size(605, 389);
-            this.tp_domain.TabIndex = 3;
-            this.tp_domain.UseVisualStyleBackColor = true;
-            // 
-            // tp_service2
-            // 
-            this.tp_service2.Controls.Add(this.src_s2);
-            this.tp_service2.Location = new System.Drawing.Point(4, 22);
-            this.tp_service2.Name = "tp_service2";
-            this.tp_service2.Size = new System.Drawing.Size(605, 389);
-            this.tp_service2.TabIndex = 4;
-            this.tp_service2.UseVisualStyleBackColor = true;
-            // 
-            // src_c1
-            // 
-            this.src_c1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.src_c1.Location = new System.Drawing.Point(3, 3);
-            this.src_c1.Name = "src_c1";
-            this.src_c1.Size = new System.Drawing.Size(599, 383);
-            this.src_c1.TabIndex = 0;
-            this.src_c1.Text = "scintilla1";
-            // 
             // src_c2
             // 
             this.src_c2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -335,6 +266,15 @@
             this.src_c2.Size = new System.Drawing.Size(599, 383);
             this.src_c2.TabIndex = 1;
             this.src_c2.Text = "scintilla2";
+            // 
+            // tp_service1
+            // 
+            this.tp_service1.Controls.Add(this.src_s1);
+            this.tp_service1.Location = new System.Drawing.Point(4, 22);
+            this.tp_service1.Name = "tp_service1";
+            this.tp_service1.Size = new System.Drawing.Size(605, 389);
+            this.tp_service1.TabIndex = 2;
+            this.tp_service1.UseVisualStyleBackColor = true;
             // 
             // src_s1
             // 
@@ -345,6 +285,15 @@
             this.src_s1.TabIndex = 1;
             this.src_s1.Text = "scintilla3";
             // 
+            // tp_service2
+            // 
+            this.tp_service2.Controls.Add(this.src_s2);
+            this.tp_service2.Location = new System.Drawing.Point(4, 22);
+            this.tp_service2.Name = "tp_service2";
+            this.tp_service2.Size = new System.Drawing.Size(605, 389);
+            this.tp_service2.TabIndex = 4;
+            this.tp_service2.UseVisualStyleBackColor = true;
+            // 
             // src_s2
             // 
             this.src_s2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -354,6 +303,15 @@
             this.src_s2.TabIndex = 1;
             this.src_s2.Text = "scintilla4";
             // 
+            // tp_domain
+            // 
+            this.tp_domain.Controls.Add(this.src_do);
+            this.tp_domain.Location = new System.Drawing.Point(4, 22);
+            this.tp_domain.Name = "tp_domain";
+            this.tp_domain.Size = new System.Drawing.Size(605, 389);
+            this.tp_domain.TabIndex = 3;
+            this.tp_domain.UseVisualStyleBackColor = true;
+            // 
             // src_do
             // 
             this.src_do.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -362,6 +320,68 @@
             this.src_do.Size = new System.Drawing.Size(605, 389);
             this.src_do.TabIndex = 1;
             this.src_do.Text = "scintilla5";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.tb_url);
+            this.panel1.Controls.Add(this.tb_modelName);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.tb_bizName);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(613, 137);
+            this.panel1.TabIndex = 0;
+            // 
+            // tb_modelName
+            // 
+            this.tb_modelName.Location = new System.Drawing.Point(63, 39);
+            this.tb_modelName.Name = "tb_modelName";
+            this.tb_modelName.Size = new System.Drawing.Size(100, 21);
+            this.tb_modelName.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "实体名";
+            // 
+            // tb_bizName
+            // 
+            this.tb_bizName.Location = new System.Drawing.Point(63, 11);
+            this.tb_bizName.Name = "tb_bizName";
+            this.tb_bizName.Size = new System.Drawing.Size(100, 21);
+            this.tb_bizName.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "包名";
+            // 
+            // tb_url
+            // 
+            this.tb_url.Location = new System.Drawing.Point(63, 70);
+            this.tb_url.Name = "tb_url";
+            this.tb_url.Size = new System.Drawing.Size(100, 21);
+            this.tb_url.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 12);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "URL";
             // 
             // MainWindow
             // 
@@ -389,14 +409,14 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.sec_do.ResumeLayout(false);
             this.tp_controller1.ResumeLayout(false);
             this.tp_controller2.ResumeLayout(false);
             this.tp_service1.ResumeLayout(false);
-            this.tp_domain.ResumeLayout(false);
             this.tp_service2.ResumeLayout(false);
+            this.tp_domain.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,6 +451,8 @@
         private ScintillaNET.Scintilla src_s1;
         private ScintillaNET.Scintilla src_s2;
         private ScintillaNET.Scintilla src_do;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tb_url;
     }
 }
 

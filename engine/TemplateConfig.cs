@@ -29,6 +29,7 @@ namespace engine
         {
             ((JArray)configs["templates"]).Add(path);
             SaveToFile(configs);
+            TemplateFactory.RefreshResources();
         }
 
         public static void RemovePath(int index)

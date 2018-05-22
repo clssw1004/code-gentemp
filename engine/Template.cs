@@ -12,11 +12,7 @@ namespace engine
 {
     public abstract class Template
     {
-        static Template()
-        {
-            RefreshResources();
-        }
-        protected static Dictionary<String, String> global_args = new Dictionary<String, String>();
+
         protected String Content { get; set; }
         protected Template(String templateFile, Encoding encoding)
         {
@@ -30,42 +26,16 @@ namespace engine
             Content = templateStr;
         }
         public abstract String Render(Dictionary<String, Object> args);
-        public static void RefreshResources()
-        {
-            List<String> paths = TemplateConfig.GetPaths();
-            foreach (var p in paths)
-            {
-                if (Directory.Exists(p))
-                {
-                    foreach (var f in Directory.GetFiles(p))
-                    {
-                        if (Regex.IsMatch(f, @"\.json"))
-                        {
-                            String json = File.ReadAllText(f, Encoding.UTF8);
-                            JObject jObject = (JObject)JsonConvert.DeserializeObject(json);
-                            foreach (var t in jObject)
-                            {
-                                global_args.Add(t.Key, t.Value.ToString());
-                            }
-                        }
-                        if (Regex.IsMatch(f, @"\.tpl"))
-                        {
-                            String tplStr = File.ReadAllText(f, Encoding.UTF8);
-                            TemplateFactory.Register(new FileInfo(f).Name, tplStr);
-                        }
-                    }
-                }
-            }
-        }
+        
         protected static String GetValue(String variable, Dictionary<String, Object> args)
         {
             if (args.ContainsKey(variable) && args[variable] != null)
             {
                 return args[variable].ToString();
             }
-            else if (global_args.ContainsKey(variable))
+            else if (TemplateFactory.HasArg(variable))
             {
-                return global_args[variable];
+                return TemplateFactory.GetArg(variable);
             }
             return String.Format(" [\"{0}\" is undefined] ", variable);
         }

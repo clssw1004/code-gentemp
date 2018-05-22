@@ -46,34 +46,28 @@ namespace App
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
+
+            if (Adapter != null && listBox1.SelectedItem != null)
             {
-                if (Adapter != null && listBox1.SelectedItem != null)
+                selectTable = listBox1.SelectedItem.ToString();
+                tableCols = Adapter.GetColumns(selectTable);
+                this.listView1.BeginUpdate();
+
+                foreach (var col in tableCols)
                 {
-                    selectTable = listBox1.SelectedItem.ToString();
-                    tableCols = Adapter.GetColumns(selectTable);
-                    this.listView1.BeginUpdate();
-
-                    foreach (var col in tableCols)
-                    {
-                        ListViewItem lvi = new ListViewItem();
-                        lvi.Text = col.ColumnName;
-                        lvi.SubItems.Add(col.ColumnType);
-                        lvi.SubItems.Add(col.IsNullable);
-                        this.listView1.Items.Add(lvi);
-                    }
-
-                    this.listView1.EndUpdate();
-                    generateArgs();
-                    renderTemplate();
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = col.ColumnName;
+                    lvi.SubItems.Add(col.ColumnType);
+                    lvi.SubItems.Add(col.IsNullable);
+                    this.listView1.Items.Add(lvi);
                 }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
 
+                this.listView1.EndUpdate();
+                generateArgs();
+                renderTemplate();
+            }
         }
+
 
         private void menu_connDb_Click(object sender, EventArgs e)
         {
@@ -120,30 +114,26 @@ namespace App
                 addArgs("modelName", modelName);
                 addArgs("modelNameVariable", modelNameVariable);
                 addArgs("bizName", bizName);
+                addArgs("namespace", String.IsNullOrEmpty(tb_url.Text) ? bizName : tb_url.Text);
 
             }
         }
         private void renderTemplate()
         {
-            String pathPrefix = @"D:\env\2018\code-gentemp\templates\";
 
-            String controll1Path = pathPrefix + @"controller\TDicController.java";
-            SimpleTemplate t1 = new SimpleTemplate(controll1Path, Encoding.UTF8);
+            SimpleTemplate t1 = TemplateFactory.GetTemplate<SimpleTemplate>("controller1");
             tp_controller1.Text = args["modelName"] + "Controller";
             src_c1.Text = t1.Render(args);
-            
-            String controll2Path = pathPrefix + @"controller\TDicQueryController.java";
-            SimpleTemplate t2 = new SimpleTemplate(controll2Path, Encoding.UTF8);
+
+            SimpleTemplate t2 = TemplateFactory.GetTemplate<SimpleTemplate>("controller2");
             tp_controller2.Text = args["modelName"] + "QueryController";
             src_c2.Text = t2.Render(args);
 
-            String service1Path = pathPrefix + @"service\TDicService.java";
-            SimpleTemplate t3 = new SimpleTemplate(service1Path, Encoding.UTF8);
+            SimpleTemplate t3 = TemplateFactory.GetTemplate<SimpleTemplate>("service");
             tp_service1.Text = args["modelName"] + "Service";
             src_s1.Text = t2.Render(args);
 
-            String service2Path = pathPrefix + @"query\TDicQuery.java";
-            SimpleTemplate t4 = new SimpleTemplate(service2Path, Encoding.UTF8);
+            SimpleTemplate t4 = TemplateFactory.GetTemplate<SimpleTemplate>("query");
             tp_service2.Text = args["modelName"] + "Query";
             src_s2.Text = t2.Render(args);
 
