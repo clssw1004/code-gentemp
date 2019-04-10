@@ -28,6 +28,7 @@ namespace engine.db
                 case "nvarchat":
                 case "text":
                 case "longtext":
+                case "char":
                     return "String";
                 case "int":
                     return "Integer";

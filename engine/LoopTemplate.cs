@@ -31,7 +31,7 @@ namespace engine
                     List<Dictionary<String, Object>> loopArgs = args[variable] as List<Dictionary<String, Object>>;
                     int firstIndex = Content.IndexOf(m.Value);
                     String endFor = String.Format(@"$endfor{0}{1}{2}", "{",variable,"}");
-                    int lastIndex = Content.LastIndexOf(endFor);
+                    int lastIndex = Content.LastIndexOf(endFor) + endFor.Length;
                     if (firstIndex >= 0 && lastIndex >= 0)
                     {
                         if (firstIndex >= 0)

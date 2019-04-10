@@ -57,7 +57,7 @@ namespace engine.db
         /// <returns>返回MySqlConnection对象</returns>
         public  MySqlConnection GetConnection()
         {
-            string M_str_sqlcon = string.Format("server={0};user id={1};password={2};database={3};port={4};Charset={5}", server, userName, password, database, port, charset);
+            string M_str_sqlcon = string.Format("server={0};user id={1};password={2};database={3};port={4};Charset={5};SslMode = none", server, userName, password, database, port, charset);
             MySqlConnection myCon = new MySqlConnection(M_str_sqlcon);
             return myCon;
         }
