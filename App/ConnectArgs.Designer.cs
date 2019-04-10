@@ -211,7 +211,7 @@
             this.tb_host.Name = "tb_host";
             this.tb_host.Size = new System.Drawing.Size(167, 21);
             this.tb_host.TabIndex = 1;
-            this.tb_host.Text = "47.110.95.104";
+            this.tb_host.Text = "127.0.0.1";
             // 
             // label1
             // 
